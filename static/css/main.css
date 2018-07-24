@@ -22,7 +22,7 @@ a {
 
 .content-box {
     position: absolute;
-    left: 250px;
+    left: 200px;
     right: 0;
     top: 70px;
     bottom: 0;
@@ -31,10 +31,15 @@ a {
     transition: left .3s ease-in-out;
     background: #f0f0f0;
 }
-
 .content {
     width: auto;
     padding: 40px;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .content-collapse {
@@ -166,4 +171,11 @@ a {
 
 .v-note-wrapper .v-note-panel {
     min-height: 500px;
+}
+
+.el-submenu .el-submenu__title:hover{
+    background-color: #48576a!important;
+}
+.el-menu-item i:hover{
+    color: #fff!important;
 }

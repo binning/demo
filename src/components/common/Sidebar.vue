@@ -1,6 +1,7 @@
+
 <template>
     <div class="sidebar">
-        <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse" background-color="#324157"
+        <el-menu class="sidebar-el-menu" :default-active="onRoutes" :collapse="collapse"
             text-color="#bfcbd9" active-text-color="#20a0ff" unique-opened router>
             <template v-for="item in items">
                 <template v-if="item.subs">
@@ -33,61 +34,162 @@
                     {
                         icon: 'el-icon-setting',
                         index: 'dashboard',
-                        title: '系统首页'
+                        title: '首页'                  
                     },
                     {
                         icon: 'el-icon-tickets',
-                        index: 'table',
-                        title: '基础表格'
+                        index: 'order',
+                        title: '订单管理',
+                         subs: [
+                            {
+                                index: 'orderToltal',
+                                title: '所有订单'
+                            },
+                            {
+                                index: 'orderCount',
+                                title: '订单统计'
+                            }             
+                        ]
                     },
                     {
                         icon: 'el-icon-message',
-                        index: 'tabs',
-                        title: 'tab选项卡'
+                        index: 'userManage',
+                        title: '用户管理',
+                         subs: [
+                            {
+                                index: 'userTotal',
+                                title: '所有用户'
+                            },
+                            {
+                                index: 'userCount',
+                                title: '用户统计'
+                            }             
+                        ]
                     },
                     {
                         icon: 'el-icon-date',
-                        index: '3',
-                        title: '表单相关',
+                        index: 'productManage',
+                        title: '产品管理',
                         subs: [
                             {
-                                index: 'form',
-                                title: '基本表单'
+                                index: 'creditWork',
+                                title: '信贷业务'
                             },
                             {
-                                index: 'editor',
-                                title: '富文本编辑器'
-                            },
-                            {
-                                index: 'markdown',
-                                title: 'markdown编辑器'
-                            },
-                            {
-                                index: 'upload',
-                                title: '文件上传'
+                                index: 'productData',
+                                title: '产品数据'
                             }
                         ]
                     },
                     {
                         icon: 'el-icon-star-on',
-                        index: 'charts',
-                        title: 'schart图表'
+                        index: 'risk',
+                        title: '风控审核',
+                         subs: [
+                            {
+                                index: 'machineData',
+                                title: '机器审核数据'
+                            },
+                            {
+                                index: 'firstCheck',
+                                title: '人工初审'
+                            },
+                            {
+                                index: 'secondCheck',
+                                title: '人工复审'
+                            }  ,
+                            {
+                                index: 'checkData',
+                                title: '审核数据'
+                            }               
+                        ]
                     },
                     {
                         icon: 'el-icon-rank',
-                        index: 'drag',
-                        title: '拖拽列表'
+                        index: 'collection',
+                        title: '催收管理',
+                         subs: [
+                            {
+                                index: 'collOrder',
+                                title: '催收订单'
+                            },
+                            {
+                                index: 'collHistory',
+                                title: '历史催收'
+                            },
+                            {
+                                index: 'collData',
+                                title: '催收数据'
+                            }          
+                        ]
                     },
                     {
                         icon: 'el-icon-warning',
-                        index: 'permission',
-                        title: '权限测试'
+                        index: 'callcentar',
+                        title: '客服中心',
+                         subs: [
+                            {
+                                index: 'userFeedback',
+                                title: '用户反馈'
+                            },
+                            {
+                                index: 'callRecords',
+                                title: '来电记录'
+                            },
+                            {
+                                index: 'enjoyIs',
+                                title: '满意度统计'
+                            }             
+                        ]
+                    },
+                    {
+                        icon: 'el-icon-warning',
+                        index: 'statsCenter',
+                        title: '统计中心',
+                         subs: [
+                            {
+                                index: 'finance',
+                                title: '财务统计'
+                            },
+                            {
+                                index: 'performance',
+                                title: '绩效统计'
+                            },
+                            {
+                                index: 'user',
+                                title: '用户统计'
+                            },
+                            {
+                                index: 'order',
+                                title: '订单统计'
+                            }             
+                        ]
+                    },
+                    {
+                        icon: 'el-icon-warning',
+                        index: 'systemCenter',
+                        title: '系统管理',
+                         subs: [
+                            {
+                                index: 'system',
+                                title: '系统管理'
+                            },
+                            {
+                                index: 'personal',
+                                title: '人事结构'
+                            }             
+                        ]
                     },
                     {
                         icon: 'el-icon-error',
-                        index: '404',
-                        title: '404页面'
-                    }
+                        index: 'chart',
+                        title: '图表'
+                    },
+                       // {
+                    //     icon: 'el-icon-error',
+                    //     index: '404',
+                    //     title: '404页面'
+                    // }
                 ]
             }
         },
@@ -118,9 +220,32 @@
         width: 0;
     }
     .sidebar-el-menu:not(.el-menu--collapse){
-        width: 250px;
+        width: 200px;
     }
     .sidebar > ul {
         height:100%;
     }
+
+     .el-menu-item{
+       background-color: rgb(73, 80, 96)!important;
+    }
+    .el-menu-item:hover{
+          background-color: #48576a!important;
+          color: #fff!important;
+    }
+    .sidebar-el-menu{
+         background-color: rgb(73, 80, 96)!important;
+    }
+   
+    .el-menu-item.is-active{
+         /* background-color: rgb(50, 65, 87)!important; */
+    }  
+    .el-submenu .el-menu--inline .el-menu-item{
+    background-color: #363e4f!important;
+    }
+    .el-submenu .el-menu--inline .el-menu-item:hover{
+    background-color: #48576a!important;
+    color: #fff!important;
+    }
+
 </style>
