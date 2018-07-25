@@ -48,6 +48,7 @@
 </template>
 <script>
 import bus from "../common/bus";
+import router from '../../router';
 export default {
   data() {
     return {
@@ -109,6 +110,15 @@ export default {
     if (document.body.clientWidth < 1500) {
       this.collapseChage();
     }
+  },
+  created(){
+      router.beforeEach((to,from,next) => {
+               this.$Progress.start();     
+               next();            
+            });
+             router.afterEach((to,from) => {
+               this.$Progress.finish();
+            });
   }
 };
 </script>
