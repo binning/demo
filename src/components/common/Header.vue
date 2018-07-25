@@ -112,9 +112,10 @@ export default {
     }
   },
   created(){
+    //顶部加载条
       router.beforeEach((to,from,next) => {
-               this.$Progress.start();     
-               next();            
+              this.$Progress.start();     
+              next();            
             });
              router.afterEach((to,from) => {
                this.$Progress.finish();
