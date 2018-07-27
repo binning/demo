@@ -1,9 +1,6 @@
 <template>
     <div id="app">
-         <!-- 加载进度条 -->
-        <vue-progress-bar></vue-progress-bar>
-        <router-view></router-view>
-        
+        <router-view></router-view>       
     </div>
 </template>
 <style>

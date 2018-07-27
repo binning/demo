@@ -8,17 +8,18 @@ import 'element-ui/lib/theme-chalk/index.css';    // 默认主题
 import "babel-polyfill";
 import { scrypt } from 'crypto';
 //加载进度条
-import VueProgressBar from 'vue-progressbar';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css' //这个样式必须引入
+
+// 简单配置加载进度条
+NProgress.inc(0.2);
+NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false });
 
 Vue.use(ElementUI, { size: 'small' });
-Vue.use(VueProgressBar,{
-    color:'rgb(143, 255, 199)',
-    failedColor: 'red',
-    height: '2px'
-})
 Vue.prototype.$axios = axios;
 //使用钩子函数对路由进行权限跳转
 router.beforeEach((to, from, next) => {  
+    NProgress.start();
     const role = localStorage.getItem('ms_username');
     if(!role && to.path !== '/login'){
         next('/login');
@@ -35,8 +36,10 @@ router.beforeEach((to, from, next) => {
             next();          
         }
     }
-})
-
+});
+router.afterEach(() => {
+    NProgress.done();
+  })
 
 new Vue({
     router,

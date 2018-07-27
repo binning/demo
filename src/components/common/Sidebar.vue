@@ -26,7 +26,6 @@
 
 <script>
     import bus from '../common/bus';
-    import router from '../../router';
     export default {
         data() {
             return {
@@ -203,14 +202,6 @@
             // 通过 Event Bus 进行组件间通信，来折叠侧边栏
             bus.$on('collapse', msg => {
                 this.collapse = msg;
-            });
-            //顶部加载条
-            router.beforeEach((to,from,next) => {
-               this.$Progress.start();     
-               next();            
-            });
-             router.afterEach((to,from) => {
-               this.$Progress.finish();
             });
         }
     }
