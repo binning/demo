@@ -138,7 +138,12 @@ export default {
   computed: {
     role() {
       return this.name === "admin" ? "超级管理员" : "普通用户";
-    }
+    },
+  },
+  created(){
+    //   this.$store.dispatch('toggleSideBar');
+       this.$store.commit('changeNum');
+      console.log(this.$store.state)
   }
 };
 </script>

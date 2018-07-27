@@ -2,53 +2,23 @@
     <div class="contants">
        <div class="crumbs">
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item><i class="el-icon-date"></i> 用户管理</el-breadcrumb-item>
-                <el-breadcrumb-item>所有用户</el-breadcrumb-item>
+                <el-breadcrumb-item><i class="el-icon-date"></i> 系统管理</el-breadcrumb-item>
+                <el-breadcrumb-item>账号管理</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
        <div class="table">
-        <div class="container">
-            <div class="search-box">   
+        <div class="container">          
+          <div class="handle-box">
                 <el-input v-model="select_word" placeholder="请输入关键词" class="handle-input mr10"></el-input>
                 <el-button type="primary" icon="search" @click="search">搜索</el-button>
-            </div>
-          <div class="handle-box">
                 <el-select v-model="select_cate" placeholder="全部" class="handle-select mr10">
                     <el-option key="1" label="全部" value="全部"></el-option>
-                    <el-option key="2" label="新注册" value="新注册"></el-option>
-                    <el-option key="3" label="首次申请" value="首次申请"></el-option>
+                    <el-option key="2" label="管理员" value="管理员"></el-option>
+                    <el-option key="3" label="信审员" value="信审员"></el-option>
+                     <el-option key="4" label="催收员" value="催收员"></el-option>
+                    <el-option key="5" label="客服" value="客服"></el-option>
                 </el-select>
-                   <el-select v-model="select_cate" placeholder="全部" class="handle-select mr10">
-                    <el-option key="1" label="全部" value="全部"></el-option>
-                    <el-option key="2" label="白名单" value="白名单"></el-option>
-                    <el-option key="3" label="黑名单" value="黑名单"></el-option>
-                    <el-option key="4" label="灰名单" value="灰名单"></el-option>
-                </el-select>
-                   <el-select v-model="select_cate" placeholder="全部" class="handle-select mr10">
-                    <el-option key="1" label="全部" value="全部"></el-option>
-                    <el-option key="2" label="已实名" value="已实名"></el-option>
-                    <el-option key="3" label="未实名" value="未实名"></el-option>
-                </el-select>
-           
-                
-                <div class="time-select clearfix">
-                    <span class="demonstration">时间段:</span>
-                    <el-select v-model="select_cate" placeholder="全部" class="handle-select mr10">
-                        <el-option key="1" label="全部" value="全部"></el-option>
-                        <el-option key="2" label="7天" value="7天"></el-option>
-                        <el-option key="3" label="1个月" value="1个月"></el-option>
-                        <el-option key="4" label="6个月" value="6个月"></el-option>
-                        <el-option key="5" label="1年" value="1年"></el-option>
-                    </el-select>
-                    <span class="demonstration">自定义:</span>
-                    <el-date-picker
-                    v-model="value6"
-                    type="datetimerange"
-                    start-placeholder="开始日期"
-                    end-placeholder="结束日期"
-                    :default-time="['12:00:00']">
-                    </el-date-picker>
-                </div>
+                  <el-button style="float:right" type="primary" icon="el-icon-plus">添加账号</el-button>
             </div>
         
             <el-table :data="tableData" border style="width: 100%" ref="multipleTable" @selection-change="handleSelectionChange">

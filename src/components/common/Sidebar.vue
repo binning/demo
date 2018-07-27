@@ -171,13 +171,13 @@
                         title: '系统管理',
                          subs: [
                             {
-                                index: 'system',
-                                title: '系统管理'
-                            },
-                            {
                                 index: 'personal',
                                 title: '人事结构'
-                            }             
+                            },
+                               {
+                                index: 'account',
+                                title: '账号管理'
+                            }          
                         ]
                     },
                     {

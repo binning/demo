@@ -127,8 +127,8 @@ export default new Router({
                 },
                 // 系统管理
                 {
-                    path: '/system',
-                    component: resolve => require(['../components/page/system-manage/SystemManage.vue'], resolve),
+                    path: '/account',
+                    component: resolve => require(['../components/page/system-manage/AccountManage.vue'], resolve),
                     meta: { title: '系统管理'}
                 },
                 {

@@ -7,14 +7,17 @@ import 'element-ui/lib/theme-chalk/index.css';    // 默认主题
 // import '../static/css/theme-green/index.css';       // 浅绿色主题
 import "babel-polyfill";
 import { scrypt } from 'crypto';
+import Vuex from 'vuex';
+import store from './store'
 //加载进度条
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css' //这个样式必须引入
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css'; //这个样式必须引入
 
 // 简单配置加载进度条
 NProgress.inc(0.2);
 NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false });
 
+Vue.use(Vuex);
 Vue.use(ElementUI, { size: 'small' });
 Vue.prototype.$axios = axios;
 //使用钩子函数对路由进行权限跳转
@@ -38,10 +41,12 @@ router.beforeEach((to, from, next) => {
     }
 });
 router.afterEach(() => {
+    //顶部加载条
     NProgress.done();
   })
 
 new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount('#app');
