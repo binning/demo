@@ -37,7 +37,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          localStorage.setItem("ms_username", this.ruleForm.username);
+          sessionStorage.setItem("ms_username", this.ruleForm.username);
           this.$router.push("/");
         } else {
           console.log("error submit!!");

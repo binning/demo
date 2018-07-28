@@ -1,7 +1,7 @@
 <template>
     <div>
-        <el-row :gutter="20">
-            <el-col :span="8">
+        <el-row :gutter="24">
+            <!-- <el-col :span="8">
                 <el-row>
                     <el-col>
                         <el-card shadow="hover" class="mgb20">
@@ -30,10 +30,10 @@
                         </el-card>
                     </el-col>
                 </el-row>
-            </el-col>
-            <el-col :span="16">
-                <el-row :gutter="20" class="mgb20">
-                    <el-col :span="8">
+            </el-col> -->
+            <el-col :span="24">
+                <el-row :gutter="24" class="mgb20">
+                    <el-col :span="6">
                         <el-card shadow="hover" :body-style="{padding: '0px'}">
                             <div class="grid-content grid-con-1">
                                 <i class="el-icon-view grid-con-icon"></i>
@@ -44,7 +44,7 @@
                             </div>
                         </el-card>
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="6">
                         <el-card shadow="hover" :body-style="{padding: '0px'}">
                             <div class="grid-content grid-con-2">
                                 <i class="el-icon-message grid-con-icon"></i>
@@ -55,7 +55,7 @@
                             </div>
                         </el-card>
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="6">
                         <el-card shadow="hover" :body-style="{padding: '0px'}">
                             <div class="grid-content grid-con-3">
                                 <i class="el-icon-goods grid-con-icon"></i>
@@ -66,8 +66,19 @@
                             </div>
                         </el-card>
                     </el-col>
+                     <el-col :span="6">
+                        <el-card shadow="hover" :body-style="{padding: '0px'}">
+                            <div class="grid-content grid-con-4">
+                                <i class="el-icon-search     grid-con-icon"></i>
+                                <div class="grid-cont-right">
+                                    <div class="grid-num">5000</div>
+                                    <div>搜索量</div>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
                 </el-row>
-                <el-card shadow="hover" :body-style="{ height: '304px'}">
+                <!-- <el-card shadow="hover" :body-style="{ height: '304px'}">
                     <div slot="header" class="clearfix">
                         <span>待办事项</span>
                         <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
@@ -90,21 +101,29 @@
                             </template>
                         </el-table-column>
                     </el-table>
-                </el-card>
-
+                </el-card> -->
             </el-col>
         </el-row>
+          <el-col :span="24">
+                <Line-chars></Line-chars>
+         </el-col> 
+          <el-col :span="24">        
+                <Bar-chars ></Bar-chars> 
+         </el-col>               
     </div>
 </template>
 
 <script>
 import Schart from "vue-schart";
+import LineChars from "./echars-components/line-chars";
+import BarChars from "./echars-components/bar-chars"
 export default {
   name: "dashboard",
   components: {
-    Schart
+    LineChars,
+    BarChars
   },
-  data:() => {
+  data: () => {
     return {
       name: localStorage.getItem("ms_username"),
       todoList: [
@@ -132,27 +151,29 @@ export default {
           title: "今天要写100行代码加几个bug吧",
           status: true
         }
-      ]
+      ],
     };
   },
   computed: {
     role() {
       return this.name === "admin" ? "超级管理员" : "普通用户";
-    },
+    }
   },
-  created(){
-    //   this.$store.dispatch('toggleSideBar');
-       this.$store.commit('changeNum');
-      console.log(this.$store.state)
+methods:{
+
+},
+  created() {
+    this.$store.commit("changeNum");
+    console.log(this.$store.state);
   }
 };
 </script>
 
 
 <style scoped>
-.el-row {
+/* .el-row {
   margin-bottom: 20px;
-}
+} */
 
 .grid-content {
   display: flex;
@@ -204,6 +225,13 @@ export default {
 .grid-con-3 .grid-num {
   color: rgb(242, 94, 67);
 }
+.grid-con-4 .grid-con-icon {
+  background: rgb(13, 223, 188);
+}
+
+.grid-con-4 .grid-num {
+  color: rgb(13, 223, 188);
+}
 
 .user-info {
   display: flex;
@@ -253,4 +281,5 @@ export default {
   text-decoration: line-through;
   color: #999;
 }
+
 </style>
